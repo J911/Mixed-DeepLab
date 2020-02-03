@@ -93,7 +93,7 @@ class DataSet(data.Dataset):
             image1, label1 = self.getItem_impl(index)
             image2, label2 = self.getItem_impl(newIdx)
 
-            image = (image1 * lam) + (image2 * (1 - lam))
+            image = np.add((image1 * lam), (image2 * (1 - lam)))
 
             return image.copy(), label1.copy(), label2.copy(), lam
 
