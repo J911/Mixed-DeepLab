@@ -88,11 +88,11 @@ class DataSet(data.Dataset):
     def __getitem__(self, index):
         if self.train == True:
             newIdx = random.randint(0, self.__len__())
-            
+
             image1, label1 = self.getItem_impl(index)
             image2, label2 = self.getItem_impl(newIdx)
 
-            return image1.copy(), image2.copy(), label1.copy(), label2.copy(), lam
+            return image1.copy(), image2.copy(), label1.copy(), label2.copy()
 
         image, label = self.getItem_impl(index)
 
