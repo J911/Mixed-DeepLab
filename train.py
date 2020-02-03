@@ -81,14 +81,17 @@ def train(epoch, iteration, scheduler):
     net.train()
     
     train_loss = 0
-    for idx, (images, labels1, labels2, lam) in enumerate(train_loader):
+    for idx, (images1, images2, labels1, labels2) in enumerate(train_loader):
         iteration += 1
         _, _, h, w = images.size()
-
+        
+        lam = np.random.beta(1.0, 1.0)
+        image = images1 * lam + images2 * (1-lam)
         images, labels1, labels2 = images.to(device), labels1.to(device).long(), labels2.to(device).long()
         out = net(images)
         out = F.interpolate(out, size=(h, w), mode='bilinear')
 
+        
         loss = (criterion(out, labels1) * lam) + (criterion(out, labels2) * (1 - lam)) 
 
         train_loss += loss.item()
