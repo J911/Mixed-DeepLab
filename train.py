@@ -83,7 +83,7 @@ def train(epoch, iteration, scheduler):
     train_loss = 0
     for idx, (images1, images2, labels1, labels2) in enumerate(train_loader):
         iteration += 1
-        _, _, h, w = images.size()
+        _, _, h, w = images1.size()
         
         lam = np.random.beta(1.0, 1.0)
         image = images1 * lam + images2 * (1-lam)
