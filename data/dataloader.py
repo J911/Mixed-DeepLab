@@ -87,7 +87,7 @@ class DataSet(data.Dataset):
 
     def __getitem__(self, index):
         if self.train == True:
-            newIdx = random.randint(0, self.__len__())
+            newIdx = random.randint(0, self.__len__() - 1)
 
             image1, label1 = self.getItem_impl(index)
             image2, label2 = self.getItem_impl(newIdx)
