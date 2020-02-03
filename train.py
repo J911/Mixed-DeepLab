@@ -2,6 +2,7 @@ import torch
 import torch.nn as nn
 import torch.optim as optim
 from torch.optim import lr_scheduler
+import numpy as np
 
 from data.dataloader import DataSet
 from models.deeplabv3plus import DeepLabV3Plus
