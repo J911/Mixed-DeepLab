@@ -85,7 +85,7 @@ def train(epoch, iteration, scheduler):
         iteration += 1
         _, h, w = labels.size()
 
-        images, labels = images.to(device), labels.to(device).long()
+        images, labels1, labels2 = images.to(device), labels1.to(device).long(), , labels2.to(device).long()
         out = net(images)
         out = F.interpolate(out, size=(h, w), mode='bilinear')
 
